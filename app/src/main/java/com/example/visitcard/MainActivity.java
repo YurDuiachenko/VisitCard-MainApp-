@@ -61,32 +61,32 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         IntentResult result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);
         if (result != null) {
             if (result.getContents() == null) {
-                    Log.i("Scan", "Scanner didn't has an information");
-                } else {
-                    Log.i("Scan", "Scanned");
-                    String all = result.getContents();
-                    HashMap<String, String> info = vCard.readRes(all);
-                    ArrayList<ContentProviderOperation> now = vCard.addNewStandardContact(
-                            info.get("name"),
-                            info.get("phone"),
-                            info.get("mail"),
-                            info.get("work"),
-                            info.get("adress"),
-                            info.get("website"));
-                    try {
-                        getBaseContext().getContentResolver().applyBatch(ContactsContract.AUTHORITY, now);
-                    } catch (Exception e) {
-                        Log.e("Exception: ", e.getMessage());
-                    }
-                }
+                Log.i("Scan", "Scanner didn't has an information");
             } else {
-                super.onActivityResult(requestCode, resultCode, data);
+                Log.i("Scan", "Scanned");
+                String all = result.getContents();
+                Log.i("!!!", all);
+                HashMap<String, String> info = vCard.readRes(all);
+                ArrayList<ContentProviderOperation> now = vCard.addNewStandardContact(
+                        info.get("name"),
+                        info.get("phone"),
+                        info.get("mail"),
+                        info.get("work"),
+                        info.get("adress"),
+                        info.get("website"));
+                try {
+                    getBaseContext().getContentResolver().applyBatch(ContactsContract.AUTHORITY, now);
+                } catch (Exception e) {
+                    Log.e("Exception: ", e.getMessage());
+                }
             }
+        } else {
+            super.onActivityResult(requestCode, resultCode, data);
         }
+    }
 }

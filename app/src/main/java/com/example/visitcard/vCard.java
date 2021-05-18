@@ -46,20 +46,25 @@ public class vCard {
         contact.add(ContentProviderOperation.newInsert(ContactsContract.Data.CONTENT_URI)
                 .withValueBackReference(ContactsContract.Data.RAW_CONTACT_ID, 0)
                 .withValue(ContactsContract.Data.MIMETYPE, ContactsContract.CommonDataKinds.Organization.CONTENT_ITEM_TYPE)
-                .withValue(ContactsContract.CommonDataKinds.Organization.JOB_DESCRIPTION, work)
-                .withValue(ContactsContract.CommonDataKinds.Organization.JOB_DESCRIPTION, work)
+                .withValue(ContactsContract.CommonDataKinds.Organization.TITLE, work)
+                .withValue(ContactsContract.CommonDataKinds.Organization.TYPE, ContactsContract.CommonDataKinds.Organization.TYPE_WORK)
                 .build());
-        //Добавляем данные сайта
-        contact.add(ContentProviderOperation.newAssertQuery(ContactsContract.Data.CONTENT_URI)
-                .withValueBackReference(ContactsContract.Data.RAW_CONTACT_ID, 0)
-                .withValue(ContactsContract.Data.MIMETYPE, ContactsContract.CommonDataKinds.Website.CONTENT_ITEM_TYPE)
-                .withValue(ContactsContract.CommonDataKinds.Website.URL, url)
-                .build());
-        //Добавляем данные адреса
-        contact.add(ContentProviderOperation.newInsert(ContactsContract.Data.CONTENT_URI)
-                .withValueBackReference(ContactsContract.Data.RAW_CONTACT_ID, 0)
-                .withValue(ContactsContract.Data.MIMETYPE, ContactsContract.CommonDataKinds.SipAddress.MIMETYPE)
-                .withValue(ContactsContract.CommonDataKinds.SipAddress.SIP_ADDRESS, adr).build());
+//        //Добавляем данные сайта
+//        contact.add(ContentProviderOperation.newAssertQuery(ContactsContract.Data.CONTENT_URI)
+//                .withValueBackReference(ContactsContract.Data.RAW_CONTACT_ID, 0)
+//                .withValue(ContactsContract.Data.MIMETYPE, ContactsContract.CommonDataKinds.Website.CONTENT_ITEM_TYPE)
+//                .withValue(ContactsContract.CommonDataKinds.Website.URL, url)
+//                .withValue(ContactsContract.CommonDataKinds.Website.TYPE, ContactsContract.CommonDataKinds.Website.TYPE_PROFILE)
+//                .withValue(ContactsContract.CommonDataKinds.Website.URL, url)
+//                .build());
+//        //Добавляем данные адреса
+//        contact.add(ContentProviderOperation.newInsert(ContactsContract.Data.CONTENT_URI)
+//                .withValueBackReference(ContactsContract.Data.RAW_CONTACT_ID, 0)
+//                .withValue(ContactsContract.Data.MIMETYPE, ContactsContract.CommonDataKinds.SipAddress.MIMETYPE)
+//                .withValue(ContactsContract.CommonDataKinds.SipAddress.SIP_ADDRESS, adr)
+//                .withValue(ContactsContract.CommonDataKinds.SipAddress.TYPE, ContactsContract.CommonDataKinds.SipAddress.TYPE_HOME)
+//                .withValue(ContactsContract.CommonDataKinds.SipAddress.SIP_ADDRESS, adr)
+//                .build());
         return contact;
     }
 

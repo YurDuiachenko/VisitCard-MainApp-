@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:orientation="vertical" android:layout_width="match_parent"
+              android:layout_height="match_parent">
+    <androidx.cardview.widget.CardView
+            android:id="@+id/card"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            app:cardCornerRadius="7dp"
+            app:cardMaxElevation="5dp"
+            app:contentPadding="10dp"
+            app:cardBackgroundColor="#0A7355">
+        <!--    "#00AA72"    "#27B39F"-->
+
+        <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="4dp" android:background="#FFFFFF">
+
+            <ImageView
+                    android:id="@+id/qr"
+                    android:layout_width="130dp"
+                    android:layout_height="130dp"
+                    android:padding="4dp"
+                    tools:srcCompat="@tools:sample/avatars"/>
+
+            <TextView
+                    android:id="@+id/name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="4dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_toRightOf="@id/qr"
+                    android:text="Yuri Diachenko"
+                    android:ellipsize="end"
+                    android:singleLine="true"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                    android:textSize="18dp"/>
+            <TextView
+                    android:id="@+id/phone"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/name"
+                    android:layout_marginLeft="5dp"
+                    android:layout_toRightOf="@id/qr"
+                    android:ellipsize="end"
+                    android:singleLine="true"
+                    android:text="+79102588486"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                    android:textSize="18dp"/>
+
+            <TextView
+                    android:id="@+id/email"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/phone"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="0dp"
+                    android:layout_toRightOf="@id/qr"
+                    android:text="d.yurok22@mail.ru"
+                    android:ellipsize="end"
+                    android:singleLine="true"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                    android:textSize="18dp"/>
+
+            <TextView
+                    android:id="@+id/work"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/email"
+                    android:layout_marginLeft="5dp"
+                    android:ellipsize="end"
+                    android:singleLine="true"
+                    android:layout_toRightOf="@id/qr"
+                    android:text="Android Developer(Junior)"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                    android:textSize="18dp"/>
+
+            <FrameLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="42dp" android:id="@+id/socials"
+                    android:layout_below="@id/qr"
+                    android:layout_marginEnd="1dp">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                    <ImageView
+                            android:id="@+id/vk"
+                            android:layout_width="wrap_content"
+                            android:layout_height="0dp"
+                            app:srcCompat="@drawable/ic_icons8_vk_circled"
+                            android:icon="@drawable/ic_icons8_vk_circled"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintStart_toEndOf="@+id/telegram"
+                            app:layout_constraintHorizontal_bias="0.5"
+                            app:layout_constraintEnd_toStartOf="@+id/odnokalssniki"/>
+                    <ImageView
+                            android:id="@+id/odnokalssniki"
+                            android:layout_width="wrap_content"
+                            android:layout_height="0dp"
+                            app:srcCompat="@drawable/ic_icons8_odnoklassniki"
+                            android:icon="@drawable/ic_icons8_odnoklassniki"
+                            app:layout_constraintStart_toEndOf="@+id/vk"
+                            app:layout_constraintEnd_toEndOf="parent" app:layout_constraintHorizontal_bias="0.5"
+                            app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintVertical_bias="0.0"/>
+                    <ImageView
+                            android:id="@+id/telegram"
+                            android:layout_width="wrap_content"
+                            android:layout_height="0dp"
+                            android:icon="@drawable/ic_icons8_telegram_app"
+                            app:srcCompat="@drawable/ic_icons8_telegram_app"
+                            app:layout_constraintTop_toTopOf="parent" app:layout_constraintStart_toEndOf="@+id/social"
+                            app:layout_constraintHorizontal_bias="0.5" app:layout_constraintEnd_toStartOf="@+id/vk"
+                            android:layout_marginStart="33dp"/>
+                    <TextView
+                            android:id="@+id/social"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Socials:"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                            android:textSize="18dp"
+                            app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintBottom_toBottomOf="parent" android:layout_marginStart="36dp"/>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </FrameLayout>
+        </RelativeLayout>
+    </androidx.cardview.widget.CardView>
+</LinearLayout>

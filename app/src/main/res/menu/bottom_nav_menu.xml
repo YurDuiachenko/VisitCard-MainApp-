@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+            android:id="@+id/navigation_transfer"
+            android:icon="@drawable/outline_sensors_black_24"
+            android:title="@string/title_transfer"/>
+
+    <item
+            android:id="@+id/navigation_cards"
+            android:icon="@drawable/outline_contacts_24"
+            android:title="@string/title_cards"/>
+
+    <item
+            android:id="@+id/navigation_events"
+            android:icon="@drawable/outline_event_24"
+            android:title="@string/title_events"/>
+
+</menu>

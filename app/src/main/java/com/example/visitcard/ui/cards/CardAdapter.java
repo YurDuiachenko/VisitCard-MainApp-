@@ -7,14 +7,18 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
 import com.example.visitcard.R;
 import com.example.visitcard.vCard;
 
 import java.util.List;
 
+import static com.example.visitcard.ui.cards.CardsFragment.flip;
+
 
 public class CardAdapter extends RecyclerView.Adapter<CardAdapter.PersonViewHolder> {
+
 
     private Context context;
     private List<Card> cardList;
@@ -41,23 +45,14 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.PersonViewHold
         holder.email.setText(String.valueOf(card.getMail()));
         holder.work.setText(String.valueOf(card.getWork()));
         holder.qr.setImageBitmap(card.getImage());
-//        if(vCard.data.get("tl").equals("true")) {
-//            holder.tl.setVisibility(View.VISIBLE);
-//        } else{
-//            holder.tl.setVisibility(View.INVISIBLE);
-//        }
-//
-//        if(vCard.data.get("vk").equals("true")) {
-//            holder.vk.setVisibility(View.VISIBLE);
-//        } else{
-//            holder.vk.setVisibility(View.INVISIBLE);
-//        }
-//
-//        if(vCard.data.get("ok").equals("true")) {
-//            holder.ok.setVisibility(View.VISIBLE);
-//        } else{
-//            holder.ok.setVisibility(View.INVISIBLE);
-//        }
+
+        holder.edit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                flip.replace(R.id.nav_host_fragment, new EditCardFragment());
+                flip.commit();
+            }
+        });
     }
 
 
@@ -70,7 +65,7 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.PersonViewHold
     class PersonViewHolder extends RecyclerView.ViewHolder {
 
         TextView name, phone, email, work;
-        ImageView qr, tl, vk, ok;
+        ImageView qr, tl, vk, ok, delete, edit;
 
         public PersonViewHolder(View itemView) {
             super(itemView);
@@ -83,6 +78,7 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.PersonViewHold
             tl = itemView.findViewById(R.id.telega);
             vk = itemView.findViewById(R.id.vk);
             ok = itemView.findViewById(R.id.ok);
+
         }
     }
 }

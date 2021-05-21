@@ -3,7 +3,7 @@
 
     <item
             android:id="@+id/navigation_transfer"
-            android:icon="@drawable/outline_sensors_black_24"
+            android:icon="@drawable/outline_qr_code_scanner_24"
             android:title="@string/title_transfer"/>
 
     <item

@@ -31,6 +31,8 @@ public class CardsFragment extends Fragment {
     String info;
     RecyclerView recyclerView;
 
+    public static FragmentTransaction flip;
+
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_cards, container, false);
@@ -41,6 +43,33 @@ public class CardsFragment extends Fragment {
 
         add_new_card = root.findViewById(R.id.add_card);
         add_new_card.setOnClickListener(onAddNewCardClick());
+
+
+        ArrayList<String> base = new ArrayList<>();
+        base.add("true");
+        base.add("true");
+        base.add("true");
+        MainActivity.cardList.add(
+                new Card("Юрий Дьяченко",
+                        "+79102588486",
+                        "d.yurok22@mail.ru",
+                        "Android Developer",
+                        QRCode.from("BEGIN:VCARD" + "\n" +
+                                "VERSION:" + "3.0" + "\n" +
+                                "N:" + "Юрий Дьяченко" + "\n" +
+                                "TEL:" + "+79102588486" + "\n" +
+                                "EMAIL:" + "d.yurok22@mail.ru" + "\n" +
+                                "TITLE:" + "Android Developer" + "\n" +
+                                "END:VCARD").withCharset("UTF-8").bitmap(),
+                        base,
+                        "BEGIN:VCARD" + "\n" +
+                                "VERSION:" + "3.0" + "\n" +
+                                "N:" + "Юрий Дьяченко" + "\n" +
+                                "TEL:" + "+79102588486" + "\n" +
+                                "EMAIL:" + "d.yurok22@mail.ru" + "\n" +
+                                "TITLE:" + "Android Developer" + "\n" +
+                                "END:VCARD"));
+
 
         ////////////////////////////////////////
         Bundle bundle = getArguments();
@@ -61,7 +90,8 @@ public class CardsFragment extends Fragment {
                             data.get("mail"),
                             data.get("work"),
                             bitmap,
-                            soc)
+                            soc,
+                            info)
             );
         }
         ///////////////////////////////////////
@@ -76,7 +106,7 @@ public class CardsFragment extends Fragment {
         return new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                FragmentTransaction flip = getFragmentManager().beginTransaction();
+                flip = getFragmentManager().beginTransaction();
                 flip.replace(R.id.nav_host_fragment, new AddCardFragment());
                 flip.commit();
             }
